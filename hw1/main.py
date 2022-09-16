@@ -30,16 +30,16 @@ function = lambda x: eval(f)
 
 print("\nIf the full table is not requested, the final iteration will show as iteration 0\n")
 
-print("----Fixed Point Iteration----")
-print("iteration |   x    |   f(x)   |  Error  ")
-print("-----------------------------")
+print("----Fixed Point Iteration------------------------------------------------------------------")
+print("iter |             x               |            f(x)             |      Error  ")
+print("-------------------------------------------------------------------------------------------")
 for i in range(0, int(len(fixed)/2)):
     print(f"{i:>3}  |  {fixed[i*2]:<25}  |  {function(fixed[i*2]):<25}  |  {fixed[i*2 + 1]:<25}")
-print("-----------------------------")
+print("-------------------------------------------------------------------------------------------")
 
-print("----------Bisection----------")
-print("iteration |   x    |   f(x)   |  Error  ")
-print("-----------------------------")
+print("----------Bisection------------------------------------------------------------------------")
+print("iter |             x               |            f(x)             |      Error  ")
+print("-------------------------------------------------------------------------------------------")
 for i in range(0, int(len(bisec)/2)):
     print(f"{i:>3}  |  {bisec[i*2]:<25}  |  {function(bisec[i*2]):<25}  |  {bisec[i*2 + 1]:<25}")
-print("-----------------------------")
+print("-------------------------------------------------------------------------------------------")

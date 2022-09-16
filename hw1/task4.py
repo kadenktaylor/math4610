@@ -1,11 +1,12 @@
 import math
 
 
-def f(x):
-    return x * (math.e ** (-x))
-
-
-def bisection(a, b, tol, maxIter):
+def bisection(f_expression, a, b, tol, maxIter):
+    f = lambda x: eval(f_expression)
+    a = float(a)
+    b = float(b)
+    tol = float(tol)
+    maxIter = int(maxIter)
     c = 1010101010101010101
     k = int(math.log(tol / (b-a)) / math.log(1/2)) + 1
     print(f"The value of k is: {k}")
@@ -21,12 +22,4 @@ def bisection(a, b, tol, maxIter):
         else:
             a = c
     return c
-
-
-a = input("Enter a value for a: ")
-b = input("Enter a value for b: ")
-tol = input("Enter a value for tol: ")
-maxIter = input("Enter a value for maxIter: ")
-approx = bisection(float(a), float(b), float(tol), int(maxIter))
-print(f"The approximation for the root is at {approx} with f(x) = {f(approx)}")
 

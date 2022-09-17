@@ -1,6 +1,6 @@
-## Math 4610 HW1 - Kaden Taylor A02257212 - 9/16/2022
+# Math 4610 HW1 - Kaden Taylor A02257212 - 9/16/2022
 
-# Task 1 and 2
+## Task 1 and 2
 This is my code for the Fixed Point Iteration that fulfills the requirements for task 1 and 2.
 ```python
 def fixedPointIter(g_expression, x0, tol, maxIter, v):
@@ -148,7 +148,7 @@ iter |             x               |            f(x)             |      Error
 
 ```
 
-# Task 3
+## Task 3
 I modified the main.py function slightly to give to try a bunch of x0 guess every .1 from -3 to 7. This lets us see where the zeros may be for the function:`10.14*(((math.e)**x)**2)*math.cos(math.pi/x)`
 ```python
 ----Fixed Point Iteration------------------------------------------------------------------
@@ -333,7 +333,7 @@ def fixedPointIter(g_expression, x0, tol, maxIter, v):
     return values
 ```
 
-# Task 4
+## Task 4
 My bisection algorithm uses the same main.py function and is in the module `bisection.py` and is here:
 ```python
 import math
@@ -367,4 +367,52 @@ def bisection(f_expression, a, b, tol, maxIter, v):
         values.append(b - a)
     return values
 ```
-The output 
+The output for the bisection when given the function `x*math.e**-x`
+`Command line: $ python main.py x*math.e**-x x+x*math.e**-x -10 5 1 .001 20 1`
+```python
+----------Bisection------------------------------------------------------------------------
+iter |             x               |            f(x)             |      Error
+-------------------------------------------------------------------------------------------
+  0  |  -2.5                       |  -30.456234901758677        |  15.0
+  1  |  1.25                       |  0.35813099607523763        |  7.5
+  2  |  -0.625                     |  -1.167653723395139         |  3.75
+  3  |  0.3125                     |  0.22862988404582557        |  1.875
+  4  |  -0.15625                   |  -0.18267475721398505       |  0.9375
+  5  |  0.078125                   |  0.072253813532516          |  0.46875
+  6  |  -0.0390625                 |  -0.04061857309907149       |  0.234375
+  7  |  0.01953125                 |  0.019153481428506612       |  0.1171875
+  8  |  -0.009765625               |  -0.009861459612460419      |  0.05859375
+  9  |  0.0048828125               |  0.004859028755127261       |  0.029296875
+ 10  |  -0.00244140625             |  -0.0024473739963599586     |  0.0146484375
+ 11  |  0.001220703125             |  0.0012192139180053556      |  0.00732421875
+ 12  |  -0.0006103515625           |  -0.0006107242052398171     |  0.003662109375
+ 13  |  0.00030517578125           |  0.0003050826632019477      |  0.0018310546875
+-------------------------------------------------------------------------------------------
+```
+The output for the bisection when given the function `` is:
+* I couldn't get the program to run by entering the function through the command line so I hard coded it.
+* I also found that if I gave the bisection program the entire range from -3 to 7 that it diverge. I limited the range to -3 to 0 and got these results.
+```python
+----------Bisection------------------------------------------------------------------------
+iter |             x               |            f(x)             |      Error
+-------------------------------------------------------------------------------------------
+  0  |  -1.5                       |  -0.25242043662507013       |  3.0
+  1  |  -2.25                      |  0.019560638026380514       |  1.5
+  2  |  -1.875                     |  -0.024926896675217247      |  0.75
+  3  |  -2.0625                    |  0.007798572994563874       |  0.375
+  4  |  -1.96875                   |  -0.004928761022269477      |  0.1875
+  5  |  -2.015625                  |  0.0021918345032279065      |  0.09375
+  6  |  -1.9921875                 |  -0.0011620446851059753     |  0.046875
+  7  |  -2.00390625                |  0.0005642465794853744      |  0.0234375
+  8  |  -1.998046875               |  -0.0002862862981275645     |  0.01171875
+  9  |  -2.0009765625              |  0.00014209855842054175     |  0.005859375
+ 10  |  -1.99951171875             |  -7.130994530994772e-05     |  0.0029296875
+ 11  |  -2.000244140625            |  3.558974604408759e-05      |  0.00146484375
+ 12  |  -1.9998779296875           |  -1.7811172157203772e-05    |  0.000732421875
+ 13  |  -2.00006103515625          |  8.901510355545747e-06      |  0.0003662109375
+ 14  |  -1.999969482421875         |  -4.451773991102433e-06     |  0.00018310546875
+-------------------------------------------------------------------------------------------
+```
+
+## Task 5
+My code is uploaded to github and the repository has been shared with you.

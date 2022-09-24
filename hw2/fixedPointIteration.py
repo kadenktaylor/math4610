@@ -1,14 +1,9 @@
 import math
 
 
-def fixedPointIter(g_expression, x0, tol, maxIter, v):
+def fixedPointIter(g, x0, tol, maxIter, v):
     values = []
     error = 0
-    g = lambda x: eval(g_expression)
-    x0 = float(x0)
-    tol = float(tol)
-    maxIter = int(maxIter)
-    v = int(v)
 
     for i in range(0, maxIter):
         x1 = g(x0)

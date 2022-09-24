@@ -2,7 +2,6 @@ import math as math
 
 
 def secant(f, x0, tol, v):
-    print("secant iteration")
     if v == 0:
         if abs(f(x0[-1])) < tol:
             return x0
@@ -19,10 +18,4 @@ def secant(f, x0, tol, v):
             x0.append(x0_next)
             return secant(f, x0, tol, 1)
 
-
-f = lambda x: x**2 - 3
-
-x0 = [1.6, 1.7]
-
-print(f"Newton Method: {secant(f, x0, .00000001, 1)}")
 

@@ -1,11 +1,12 @@
 import math
 
 
-def hybrid_secant(f, a, b, tol, maxIter):
+def hybrid_secant(f, a, b, tol, maxIter, v):
     error = 10.0*tol
     iteration = 0
     x0 = .49*(a+b)
     x1 = .51*(a+b)
+    array =[]
     while error > tol and iteration < maxIter:
         x2 = x0 - ((x1-x0) * f(x0)) / (f(x1) - f(x0))
         secant_error = abs(x2 - x0)
@@ -31,11 +32,10 @@ def hybrid_secant(f, a, b, tol, maxIter):
             x1 = x2
             error = secant_error
         iteration = iteration + 1
-    return x1
-
-
-f = lambda x: x*math.e**(-x)
-
-x = hybrid_secant(f, -10, 1000, .0001, 20)
-
-print(f"Hybrid Newton Method: {x} f(x1): {f(x)}")
+        if v == 1:
+            array.append(x1)
+            array.append(error)
+    if v == 0:
+        array.append(x1)
+        array.append(error)
+    return array

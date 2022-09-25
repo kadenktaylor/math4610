@@ -32,21 +32,21 @@ else:
     v = input("Print full table? 1 = Yes, 0 = No: ")
 
 
-def f(x):
-    return 10.14*((math.e**x)**2)*math.cos(math.pi/x)
+# def f(x):
+#    return 10.14*((math.e**x)**2)*math.cos(math.pi/x)
 
 
-def df(x):
-    return 10.14*((2*((math.e**x)**2)*x*math.cos(math.pi/x))+((math.pi*((math.e**x)**2)*math.sin(math.pi/x))/(x**2)))
+# def df(x):
+#    return 10.14*((2*((math.e**x)**2)*x*math.cos(math.pi/x))+((math.pi*((math.e**x)**2)*math.sin(math.pi/x))/(x**2)))
 
 
-def g(x):
-    return x - f(x)
+# def g(x):
+#    return x - f(x)
 
 
-# f = lambda x: eval(f_expression)
-# df = lambda x: eval(df_expression)
-# g = lambda x: eval(g_expression)
+f = lambda x: eval(f_expression)
+df = lambda x: eval(df_expression)
+g = lambda x: eval(g_expression)
 a = float(a)
 b = float(b)
 x0 = float(x0)

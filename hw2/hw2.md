@@ -3,8 +3,47 @@
 ## Task 1: Newton's Method for Root Finding.
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/newton.md](doc/newton.md)
 
+The code is tested with the function, `f(x) = x*math.e**-x`
+
+The command line entry looks like this:
+```
+$ python rootfinding.py x*math.e**-x math.e**-x-x*math.e**-x x-x*math.e**-x -2 1 .1 .2 .000001 20 1
+```
+
+The output for the Newton method is here:
+```
+----------Newton------------------------------------------------------------------------
+iter |             x               |            f(x)             |      |Error|
+-------------------------------------------------------------------------------------------
+  0  |  -0.011111111111111113      |  -0.011235256319625977      |  0.11111111111111112
+  1  |  -0.0001221001221001234     |  -0.00012211503145013845    |  0.01098901098901099
+  2  |  -1.4906619716777104e-08    |  -1.490661993898442e-08     |  0.00012208521548040662
+-------------------------------------------------------------------------------------------
+```
+
+
 ## Task 2: Secant Method for Root Finding.
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/secant.md](doc/secant.md)
+
+The code is tested with the function, `f(x) = x*math.e**-x`
+
+The command line entry looks like this:
+```
+$ python rootfinding.py x*math.e**-x math.e**-x-x*math.e**-x x-x*math.e**-x -2 1 .1 .2 .000001 20 1
+```
+
+The output for the Secant method is here:
+```
+----------Secant------------------------------------------------------------------------
+iter |             x               |            f(x)             |      |Error|
+-------------------------------------------------------------------------------------------
+  0  |  0.2                        |  0.1637461506155964         |  0.1
+  1  |  -0.023506370143776475      |  -0.024065464982500492      |  0.2235063701437765
+  2  |  0.005132884712382435       |  0.005106605708157981       |  0.02863925485615891
+  3  |  0.00011954905045136535     |  0.00011953475933016354     |  0.00501333566193107
+  4  |  -6.152459741965571e-07     |  -6.152463527242824e-07     |  0.00012016429642556191
+-------------------------------------------------------------------------------------------
+```
 
 ## Task 3: Tabulation of Results
 All the programs accept a `v` flag as their last argument. `v = 0` prints a single result while `v=1` prints all the iterations.

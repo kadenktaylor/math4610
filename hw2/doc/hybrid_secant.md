@@ -8,7 +8,7 @@
 
 **Description/Purpose:** This program will a given function and estimate a root for the function when two given initial guesses.
 
-**Input:** f = function, x0 = the inital guesses (an array with 2 elements, guess one and guess two), tol = tolerance (level of precession), v = flag of whether to return a single (v = 0) result or a full table (v = 1)
+**Input:** f = function, a = lower bound, b = upper bound, tol = tolerance (level of precession), v = flag of whether to return a single (v = 0) result or a full table (v = 1)
 
 **Output:** This method returns an array. Depending on the v flag input, the last iteration may be the only element in the array or the array may have each iteration in it.
 

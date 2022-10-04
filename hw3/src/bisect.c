@@ -46,4 +46,38 @@ double bisect(double (*f)(), double a, double b, double tol)
   double fc;
   //
   //compute the number of
-  int k = 
+  int k = ( (int) ( log(tol) - log(b-a) ) / log(0.5) + 1);
+  //
+  // do the iterations needed to get a close enough approximation to a root
+  //------------------------------------------------------------------------
+  //
+  for(int i=0; i<k; i++)
+    {
+      c = 0.5 * (a + b);
+      fc = f(c);
+      if(fa*fc < 0.0)
+	{
+	  b = c;
+	  fb = fc;
+	}
+      else
+	{
+	  a = c;
+	  fa = fc;
+	}
+    }
+  //
+  // return the computed approximation of the root
+  //-------------------------------------------------------------------------
+  //
+  printf("\nroot value = %f\n", c);
+  return c;
+  //
+}
+
+double fval (double xval)
+{
+  double fval = xval * xval - 4.1;
+  printf("xval = %f, fval = %f\n", xval, fval);
+  return fval;
+}

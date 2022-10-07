@@ -30,7 +30,7 @@ int main()
 double newton(double (*f)(), double (*df)(), double x0, double tol)
 {
 
-  if ( abs(f(x0)) < tol )
+  if ( fabs(f(x0)) < tol )
     {
       return x0;
     }

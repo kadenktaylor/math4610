@@ -11,9 +11,9 @@ int main()
   // Set up and initialzie some storage/numbers
   //------------------------------------------------------------
   //
-  double x0  = 1;
-  double x1 = 10;
-  double tol = .0001;
+  double x0  = 2.021;
+  double x1 = 2.022;
+  double tol = .001;
   // 
   // call the bisection routine
   // -----------------------------------------------------------
@@ -29,8 +29,9 @@ int main()
 //
 double secant(double (*f)(), double x0, double x1, double tol)
 {
-
-  if ( abs(f(x1)) < tol )
+  printf("Iteration, x0: %f, x1: %f,error: %f\n", x0, x1, fabs(f(x1)) );
+  
+  if ( fabs(f(x1)) < tol )
     {
       return x1;
     }
@@ -38,7 +39,6 @@ double secant(double (*f)(), double x0, double x1, double tol)
     {
       return secant(f, x1, ((x1-x0) * f(x0)) / (f(x1) - f(x0)), tol);
     }
-
 }
 
 double fval(double xval)

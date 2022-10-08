@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-double hnewton(double (*)(double), double (*)(double), double, double, double, int);
-double fval(double);
-double dfval(double);
+#include "hybrid_newton.h"
+
+//double hnewton(double (*)(double), double (*)(double), double, double, double, int);
+//double fval(double);
+//double dfval(double);
+
+/*
 
 int main()
 {
@@ -24,6 +28,9 @@ int main()
   //
   printf("root value = %f\n", rootval);
 }
+
+
+*/
 
 //
 // routine to compute approximations of roots using bisection
@@ -71,6 +78,8 @@ double hnewton(double (*f)(double), double (*df)(double), double a, double b, do
   return x0;
 }
 
+/*
+
 double fval(double xval)
 {
   double fval = xval * exp(-xval);
@@ -83,3 +92,5 @@ double dfval (double xval)
   double dfval = exp(-xval) - xval*exp(-xval);
   return dfval;
 }
+
+*/

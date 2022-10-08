@@ -2,8 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-double hsecant(double (*)(double), double, double, double, int);
-double fval(double);
+#include "hybrid_secant.h"
+
+//double hsecant(double (*)(double), double, double, double, int);
+//double fval(double);
+
+/*
 
 int main()
 {
@@ -23,6 +27,8 @@ int main()
   //
   printf("root value = %f\n", rootval);
 }
+
+*/
 
 //
 // routine to compute approximations of roots using bisection
@@ -72,9 +78,14 @@ double hsecant(double (*f)(double), double a, double b, double tol, int maxIter)
   return x1;
 }
 
+
+/*
+
 double fval(double xval)
 {
   double fval = xval * exp(-xval);
   // printf("xval = %f, fval = %f\n", xval, fval);
   return fval;
 }
+
+*/

@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-double hnewton();
+double hsecant(double (*)(double), double, double, double, int);
 double fval(double);
-double dfval(double);
 
 int main()
 {
@@ -12,15 +11,15 @@ int main()
   // Set up and initialzie some storage/numbers
   //------------------------------------------------------------
   //
-  double a  = 2;
-  double b = 2.5;
+  double a  = -2;
+  double b = 3;
   double tol = .001;
   int maxIter = 10;
   // 
   // call the bisection routine
   // -----------------------------------------------------------
   //
-  double rootval = hnewton(fval, dfval, a, b, tol, maxIter);
+  double rootval = hsecant(fval, a, b, tol, maxIter);
   //
   printf("root value = %f\n", rootval);
 }
@@ -29,17 +28,17 @@ int main()
 // routine to compute approximations of roots using bisection
 // -------------------------------------------------------------
 //
-double hnewton(double (*f)(), double (*df)(), double a, double b, double tol, int maxIter)
+double hsecant(double (*f)(double), double a, double b, double tol, int maxIter)
 {
   double error = 10.0*tol;
-  double iteration =0;
-  double x0 = 0.5*(a+b);
-  
+  int iteration = 0;
+  double x0 = .49*(a+b);
+  double x1 = .51*(a+b);
   while (error > tol && iteration < maxIter)
     {
-      double x1 = x0 - f(x0)/df(x0);
-      double newton_error = fabs(x1 - x0);
-      if (newton_error > error)
+      double x2 = x0 - ((x1-x0)*f(x0)) / (f(x1) - f(x0));
+      double secant_error = fabs(x2 - x0);
+      if (secant_error > error)
 	{
 	  double fa = f(a);
 	  double fb = f(b);
@@ -59,27 +58,23 @@ double hnewton(double (*f)(), double (*df)(), double a, double b, double tol, in
 		}
 	    }
 	  error = fabs(b-a);
-	  x0 = 0.5*(a+b);
+	  x0 = .49*(a+b);
+	  x1 = .51*(a+b);
 	}
       else
 	{
 	  x0 = x1;
-	  error = newton_error;
-	}
+	  x1 = x2;
+	  error = secant_error;
+	}  
       iteration = iteration + 1;
     }
-  return x0;
+  return x1;
 }
 
 double fval(double xval)
 {
-  double fval = xval * xval - 4.1;
+  double fval = xval * exp(-xval);
   // printf("xval = %f, fval = %f\n", xval, fval);
   return fval;
-}
-
-double dfval (double xval)
-{
-  double dfval = 2 * xval;
-  return dfval;
 }

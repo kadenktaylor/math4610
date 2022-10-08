@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-double hnewton();
+double hnewton(double (*)(double), double (*)(double), double, double, double, int);
 double fval(double);
 double dfval(double);
 
@@ -12,8 +12,8 @@ int main()
   // Set up and initialzie some storage/numbers
   //------------------------------------------------------------
   //
-  double a  = 2;
-  double b = 2.5;
+  double a  = -2;
+  double b = 3;
   double tol = .001;
   int maxIter = 10;
   // 
@@ -29,7 +29,7 @@ int main()
 // routine to compute approximations of roots using bisection
 // -------------------------------------------------------------
 //
-double hnewton(double (*f)(), double (*df)(), double a, double b, double tol, int maxIter)
+double hnewton(double (*f)(double), double (*df)(double), double a, double b, double tol, int maxIter)
 {
   double error = 10.0*tol;
   double iteration =0;
@@ -46,7 +46,7 @@ double hnewton(double (*f)(), double (*df)(), double a, double b, double tol, in
 	  for (int i = 0; i < 4; i++)
 	    {
 	      double c = 0.5*(a+b);
-	      fc = f(c);
+	      double fc = f(c);
 	      if (fa*fc < 0)
 		{
 		  b = c;
@@ -73,13 +73,13 @@ double hnewton(double (*f)(), double (*df)(), double a, double b, double tol, in
 
 double fval(double xval)
 {
-  double fval = xval * xval - 4.1;
+  double fval = xval * exp(-xval);
   // printf("xval = %f, fval = %f\n", xval, fval);
   return fval;
 }
 
 double dfval (double xval)
 {
-  double dfval = 2 * xval;
+  double dfval = exp(-xval) - xval*exp(-xval);
   return dfval;
 }

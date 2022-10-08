@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-double secant();
+double secant(double (*)(double), double, double, double);
 double fval(double);
 
 int main()
@@ -27,7 +27,7 @@ int main()
 // routine to ocmpute approximations of roots using bisection
 // -------------------------------------------------------------
 //
-double secant(double (*f)(), double x0, double x1, double tol)
+double secant(double (*f)(double), double x0, double x1, double tol)
 {
   printf("Iteration, x0: %f, x1: %f,error: %f\n", x0, x1, fabs(f(x1)) );
   
@@ -43,7 +43,7 @@ double secant(double (*f)(), double x0, double x1, double tol)
 
 double fval(double xval)
 {
-  double fval = xval * xval - 4.1;
+  double fval = xval * exp(-xval);
   // printf("xval = %f, fval = %f\n", xval, fval);
   return fval;
 }

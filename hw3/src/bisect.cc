@@ -2,8 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-double bisect(double (*)(double), double, double, double);
-double fval(double);
+#include "bisect.h"
+
+// double bisect(double (*)(double), double, double, double);
+// double fval(double);
+
+/*
 
 int main()
 {
@@ -21,6 +25,9 @@ int main()
   double rootval = bisect(fval, a, b, tol);
   //
 }
+
+*/
+
 //
 // routine ot ocmpute approximations of roots using bisection
 // -------------------------------------------------------------
@@ -39,7 +46,7 @@ double bisect(double (*f)(double), double a, double b, double tol)
   // 
   if(fa*fb >= 0.0)
     {
-      printf("There may not be a root in [a,b]: f(a)*f(b) = %e", fa*fb);
+      //printf("There may not be a root in [a,b]: f(a)*f(b) = %e", fa*fb);
       exit(-1);
     }
   double c;
@@ -70,10 +77,12 @@ double bisect(double (*f)(double), double a, double b, double tol)
   // return the computed approximation of the root
   //-------------------------------------------------------------------------
   //
-  printf("\nroot value = %f\n", c);
+  //printf("\nroot value = %f\n", c);
   return c;
   //
 }
+
+/*
 
 double fval (double xval)
 {
@@ -81,3 +90,5 @@ double fval (double xval)
   printf("xval = %f, fval = %f\n", xval, fval);
   return fval;
 }
+
+*/

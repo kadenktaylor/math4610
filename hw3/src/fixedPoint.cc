@@ -2,8 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-double fixedPoint(double (*)(double), double, double, int);
-double gval(double);
+#include "fixedPoint.h"
+ 
+//double fixedPoint(double (*)(double), double, double, int);
+// double gval(double);
+
+
+/*
 
 int main()
 {
@@ -25,6 +30,10 @@ int main()
 // routine to ocmpute approximations of roots using bisection
 // -------------------------------------------------------------
 //
+
+*/
+
+
 double fixedPoint(double (*g)(double), double x0, double tol, int maxIter)
 {
   double error = 100;
@@ -40,9 +49,14 @@ double fixedPoint(double (*g)(double), double x0, double tol, int maxIter)
   return x0;
 }
 
+
+/*
+
 double gval(double xval)
 {
   double gval = xval - (xval*exp(-xval));
-  printf("xval = %f, fval = %f\n", xval, gval);
+  // printf("xval = %f, fval = %f\n", xval, gval);
   return gval;
 }
+
+*/

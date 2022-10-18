@@ -1,0 +1,9 @@
+#include <math.h>
+
+float relError(float v, float u)
+{
+  float error;
+  error = abs(u-v)/abs(u);  
+  return error;
+}
+

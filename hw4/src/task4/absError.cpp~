@@ -1,0 +1,8 @@
+#include <math.h>
+
+float absError(float v, float u)
+{
+  float error;
+  error = abs(u-v);
+  return error;
+}

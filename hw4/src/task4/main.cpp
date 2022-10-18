@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "absError.cpp"
+#include "relError.cpp"
+
+int main()
+{
+  float v = 2.1;
+  float u = 0.9;
+  
+  float absolute = absError(v, u);
+  float relative = relError(v, u);
+  
+  printf("The absolute error is: %f\n", absolute);
+  printf("The relative error is: %f\n", relative);
+  
+  return 1;
+}

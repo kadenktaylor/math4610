@@ -3,6 +3,25 @@
 ## Task 1: Newton's Method for Root Finding.
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/newton.md](doc/newton.md)
 
+My code for the newton functin is here:
+```python
+def newton(f, df, x0, tol, v):
+    if v == 0:
+        if abs(f(x0[-1])) < tol:
+            return x0
+        else:
+            x0_next = x0[-1] - f(x0[-1])/df(x0[-1])
+            x0[-1] = x0_next
+            return newton(f, df, x0, tol, 0)
+    else:
+        if abs(f(x0[-1])) < tol:
+            return x0
+        else:
+            x0_next = x0[-1] - f(x0[-1])/df(x0[-1])
+            x0.append(x0_next)
+            return newton(f, df, x0, tol, 1)
+```
+
 The code is tested with the function, `f(x) = x*math.e**-x`
 
 The command line entry looks like this:
@@ -24,6 +43,26 @@ iter |             x               |            f(x)             |      |Error|
 
 ## Task 2: Secant Method for Root Finding.
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/secant.md](doc/secant.md)
+
+My code for the Secant method is here:
+```python
+def secant(f, x0, tol, v):
+    if v == 0:
+        if abs(f(x0[-1])) < tol:
+            return x0
+        else:
+            x0_next = x0[-2] - ((x0[-1]-x0[-2]) * f(x0[-2])) / (f(x0[-1]) - f(x0[-2]))
+            x0[-2] = x0[-1]
+            x0[-1] = x0_next
+            return secant(f, x0, tol, 0)
+    else:
+        if abs(f(x0[-1])) < tol:
+            return x0
+        else:
+            x0_next = x0[-2] - ((x0[-1]-x0[-2]) * f(x0[-2])) / (f(x0[-1]) - f(x0[-2]))
+            x0.append(x0_next)
+            return secant(f, x0, tol, 1)
+```
 
 The code is tested with the function, `f(x) = x*math.e**-x`
 
@@ -50,6 +89,43 @@ All the programs accept a `v` flag as their last argument. `v = 0` prints a sing
 
 ## Task 4: Hybrid Method - Bisection/Newton's Method
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/hybrid_newton.md](doc/hybrid_newton.md)
+
+My code for the Hybrid Bisection and Newton Method is here:
+```python
+def hybrid_newton(f, df, a, b, tol, maxIter, v):
+    error = 10.0*tol
+    iteration = 0
+    x0 = .5*(a+b)
+    array = []
+    while error > tol and iteration < maxIter:
+        x1 = x0 - f(x0)/df(x0)
+        newton_error = abs(x1 - x0)
+        if newton_error > error:
+            fa = f(a)
+            fb = f(b)
+            for i in range(1, 4):
+                c = 0.5*(a+b)
+                fc = f(c)
+                if fa*fc < 0:
+                    b = c
+                    fb = fc
+                else:
+                    a = c
+                    fa = fc
+            error = abs(b-a)
+            x0 = .5*(a + b)
+        else:
+            x0 = x1
+            error = newton_error
+        iteration = iteration + 1
+        if v == 1:
+            array.append(x0)
+            array.append(error)
+    if v == 0:
+        array.append(x0)
+        array.append(error)
+    return array
+```
 
 The code is tested with the function, `f(x) = 10.14*((math.e**x)**2)*math.cos(math.pi/x)`, on an interval `[-3,7]`.
 
@@ -80,6 +156,46 @@ iter |             x               |            f(x)             |      |Error|
 
 ## Task 5: Another Hybrid Method - Bisection/Secant Method
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/hybrid_secant.md](doc/hybrid_secant.md)
+
+My code for the Hybrid Bisection and Secant Method is here:
+```python
+def hybrid_secant(f, a, b, tol, maxIter, v):
+    error = 10.0*tol
+    iteration = 0
+    x0 = .49*(a+b)
+    x1 = .51*(a+b)
+    array =[]
+    while error > tol and iteration < maxIter:
+        x2 = x0 - ((x1-x0) * f(x0)) / (f(x1) - f(x0))
+        secant_error = abs(x2 - x0)
+        if secant_error > error:
+            fa = f(a)
+            fb = f(b)
+            for i in range(1, 4):
+                c = 0.5*(a+b)
+                fc = f(c)
+                if fa*fc < 0:
+                    b = c
+                    fb = fc
+                else:
+                    a = c
+                    fa = fc
+            error = abs(b-a)
+            x0 = .49*(a+b)
+            x1 = .51*(a+b)
+        else:
+            x0 = x1
+            x1 = x2
+            error = secant_error
+        iteration = iteration + 1
+        if v == 1:
+            array.append(x1)
+            array.append(error)
+    if v == 0:
+        array.append(x1)
+        array.append(error)
+    return array
+```
 
 The code is tested with the function, `f(x) = 10.14*((math.e**x)**2)*math.cos(math.pi/x)`, on an interval `[-3,7]`.
 

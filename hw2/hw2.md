@@ -1,4 +1,4 @@
-# Math 4610 Assignement 2
+# Math 4610 Assignement 2 - Kaden Taylor A02257212
 
 ## Task 1: Newton's Method for Root Finding.
 Here is a link to the software manual that includes documentation about the code, how to use it, examples, and the code itself: [doc/newton.md](doc/newton.md)

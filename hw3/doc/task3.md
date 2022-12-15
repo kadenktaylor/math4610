@@ -1,4 +1,4 @@
-# Math 4610 Tasksheet 3
+# Math 4610 Tasksheet 3 - Kaden Taylor A02257212
 
 ## Task1: Rewrite of Code in C.
 Here is the code for Fixed point C:
@@ -286,7 +286,8 @@ rw-r--r-- 1197435940/900885540   2392 Oct  7 20:44 2022 hybrid_secant.o
 rw-r--r-- 1197435940/900885540   1672 Oct  7 20:26 2022 newton.o
 rw-r--r-- 1197435940/900885540   1736 Oct  7 20:32 2022 secant.o
 ```
-A screen shot can be seen on my repository in the hw3/doc section
+A screen shot can be seen on my repository in the hw3/doc section and here:
+![img_1.png](img_1.png)
 
 ## Task 5: Test the shared library
 These commands in the terminal were run:
@@ -303,4 +304,5 @@ Secant Root: 0.000000
 Hybird Newton Root: -0.000000
 Hybrid Secant Root: -0.000000
 ```
-A screen shot of this work in the terminal is in my repository under hw3/doc/
+A screen shot of this work in the terminal is in my repository under hw3/doc/ and here:
+![img.png](img.png)
